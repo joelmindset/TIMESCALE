@@ -38,40 +38,39 @@ public class DisplayTimer : MonoBehaviour
     public int G_secSaver;
     public int G_secCounter = 0;
     public int RT_secCounter = 0;
-    public int RT_secSaver;
+    public string RT_secSaver;
+    public string RT_secSaver2;
+    
 
 
-    void Start()
-    {
-        rttimer = DateTime.Now;
-        RT_Hours = rttimer.Hour;
-        RT_Minutes = rttimer.Minute;
-        RT_Seconds = rttimer.Second;
-        gametime = DateTime.Now;
-        gameTimer.text = string.Format("{0:00}:{1:00}:{2:00}", RT_Hours * modifiedScale, RT_Minutes, RT_Seconds);
-    }
+    
     // Update is called once per frame
     void Update()
     {
 
         framecounter++;
         frametimer.text = Convert.ToString("Frames: " + framecounter);
-
+        RT_secSaver = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
         if (isTimer)
         {
             timer += Time.deltaTime * multiplier;
+            RTtextTimer.text = $"{rttimer:HH:mm:ss}";
             DisplayTime();
+            if (RT_secSaver != RT_secSaver2)
+            {
+                RT_secCounter++;
+            }
         }
+        RT_secSaver2 = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
 
         rttimer = DateTime.Now;
 
-
         Time.timeScale = modifiedScale;
 
-        RTtextTimer.text = $"{rttimer:HH:mm:ss}";
+        
         daysCount.text = Convert.ToString("Days: " + days);
         modifierValue.text = Convert.ToString("Modifier Value: " + modifiedScale);
-        gameSeconds.text = Convert.ToString("Game Secs: " + G_secCounter);
+        gameSeconds.text = Convert.ToString("Game Secs: " + G_secCounter + " Real Secs: " + RT_secCounter);
     }
 
     
