@@ -25,9 +25,9 @@ public class DisplayTimer : MonoBehaviour
     public DateTime gametime;
     public DateTime rttimer;
     
-    public int RT_Hours;
-    public int RT_Minutes;
-    public int RT_Seconds;
+    public int TT_Hours;
+    public int TT_Minutes;
+    public int TT_Seconds;
 
     public int hours;
     public int minutes;
@@ -37,9 +37,9 @@ public class DisplayTimer : MonoBehaviour
     public int G_secSaver;
     public int G_secSaver2;
     public int G_secCounter = 0;
-    public int RT_secCounter = 0;
-    public string RT_secSaver;
-    public string RT_secSaver2;
+    public int TT_secCounter = 0;
+    public string TT_secSaver;
+    public string TT_secSaver2;
 
     
 
@@ -51,48 +51,48 @@ public class DisplayTimer : MonoBehaviour
 
         framecounter++;
         frametimer.text = Convert.ToString("Frames: " + framecounter);
-        RT_secSaver = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
+        TT_secSaver = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
         if (isTimer)
         {
             timer += Time.deltaTime * multiplier;
             RTtextTimer.text = $"{rttimer:HH:mm:ss}";
             DisplayTime();
-            if (RT_secSaver != RT_secSaver2)
+            if (TT_secSaver != TT_secSaver2)
             {
-                RT_secCounter++;
+                TT_secCounter++;
             }
             if (G_secSaver != G_secSaver2)
             {
                 
-                RT_Seconds++;
+                TT_Seconds++;
             }
             G_secSaver2 = seconds;
-            if(RT_Seconds >= 60)
+            if(TT_Seconds >= 60)
             {
-                RT_Seconds = 0;
-                RT_Minutes++;
+                TT_Seconds = 0;
+                TT_Minutes++;
             }
-            if(RT_Minutes >= 60)
+            if(TT_Minutes >= 60)
             {
-                RT_Minutes = 00;
-                RT_Hours++;
+                TT_Minutes = 00;
+                TT_Hours++;
             }
-            if(RT_Hours >= 24)
+            if(TT_Hours >= 24)
             {
                 
-                RT_Hours = 0;
+                TT_Hours = 0;
             }
         }
-        RT_secSaver2 = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
+        TT_secSaver2 = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
 
         rttimer = DateTime.Now;
 
         Time.timeScale = modifiedScale;
 
-        gameTimer.text = string.Format("{0:00}:{1:00}:{2:00}", RT_Hours, RT_Minutes, RT_Seconds);
+        gameTimer.text = string.Format("{0:00}:{1:00}:{2:00}", TT_Hours, TT_Minutes, TT_Seconds);
         daysCount.text = Convert.ToString("Days: " + days);
         modifierValue.text = Convert.ToString("Modifier Value: " + modifiedScale);
-        gameSeconds.text = Convert.ToString("Game Secs: " + G_secCounter + " Real Secs: " + RT_secCounter);
+        gameSeconds.text = Convert.ToString("Game Secs: " + G_secCounter + " Real Secs: " + TT_secCounter);
     }
 
     

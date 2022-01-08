@@ -1816,9 +1816,9 @@ MonoBehaviour:
   multiplier: 1
   modifiedScale: 2
   days: 0
-  RT_Hours: 4
-  RT_Minutes: 3
-  RT_Seconds: 23
+  TT_Hours: 23
+  TT_Minutes: 50
+  TT_Seconds: 15
   hours: 0
   minutes: 0
   seconds: 0
@@ -1826,9 +1826,9 @@ MonoBehaviour:
   G_secSaver: 0
   G_secSaver2: 0
   G_secCounter: 0
-  RT_secCounter: 0
-  RT_secSaver: 
-  RT_secSaver2: 
+  TT_secCounter: 0
+  TT_secSaver: 
+  TT_secSaver2: 
 --- !u!1 &1504187754
 GameObject:
   m_ObjectHideFlags: 0
