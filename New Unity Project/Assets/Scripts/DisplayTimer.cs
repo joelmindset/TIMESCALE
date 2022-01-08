@@ -28,7 +28,6 @@ public class DisplayTimer : MonoBehaviour
     public int RT_Hours;
     public int RT_Minutes;
     public int RT_Seconds;
-    
 
     public int hours;
     public int minutes;
@@ -36,10 +35,12 @@ public class DisplayTimer : MonoBehaviour
 
     public int framecounter;
     public int G_secSaver;
+    public int G_secSaver2;
     public int G_secCounter = 0;
     public int RT_secCounter = 0;
     public string RT_secSaver;
     public string RT_secSaver2;
+
     
 
 
@@ -60,6 +61,27 @@ public class DisplayTimer : MonoBehaviour
             {
                 RT_secCounter++;
             }
+            if (G_secSaver != G_secSaver2)
+            {
+                
+                RT_Seconds++;
+            }
+            G_secSaver2 = seconds;
+            if(RT_Seconds >= 60)
+            {
+                RT_Seconds = 0;
+                RT_Minutes++;
+            }
+            if(RT_Minutes >= 60)
+            {
+                RT_Minutes = 00;
+                RT_Hours++;
+            }
+            if(RT_Hours >= 24)
+            {
+                
+                RT_Hours = 0;
+            }
         }
         RT_secSaver2 = rttimer.ToString("dd/MM/yyyy HH:mm:ss");
 
@@ -67,7 +89,7 @@ public class DisplayTimer : MonoBehaviour
 
         Time.timeScale = modifiedScale;
 
-        
+        gameTimer.text = string.Format("{0:00}:{1:00}:{2:00}", RT_Hours, RT_Minutes, RT_Seconds);
         daysCount.text = Convert.ToString("Days: " + days);
         modifierValue.text = Convert.ToString("Modifier Value: " + modifiedScale);
         gameSeconds.text = Convert.ToString("Game Secs: " + G_secCounter + " Real Secs: " + RT_secCounter);
