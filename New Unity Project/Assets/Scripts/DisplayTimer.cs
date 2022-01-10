@@ -106,13 +106,13 @@ public class DisplayTimer : MonoBehaviour
         
         hours = Mathf.FloorToInt(timer / (60.0f * 60.0f));
         minutes = Mathf.FloorToInt(timer / 60.0f - hours * 60);
-        seconds = Mathf.FloorToInt(timer - minutes * 60);
+        seconds = Mathf.FloorToInt(timer - minutes * 60 - hours * 60.0f * 60.0f);
         if (G_secSaver != seconds)
         {
             G_secCounter++;
         }
         G_secSaver = seconds;
-       
+        
         textTimer.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
     }
     
